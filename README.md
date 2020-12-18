@@ -2,7 +2,7 @@
 # Introduction To The Medley Lisp Environment
 
 Back in the '70s and '80s Lisp workstations were fairly popular.  A
-portable version of that environment was created at that time called
+portable version of one of those environments was created at that time called
 Medley.  The source code to that original system has been made
 open-source, ported, and modernized, and is available on GitHub.  This
 introduction is about that system.
