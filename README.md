@@ -31,7 +31,7 @@ Lisp development environments in as brief a form as possible.
 This repository contains a document designed to be an introduction to 
 the Medley system.  It assumes general knowledge of Lisp.
 
-This repository contains a PDF file of the that document.
+This repository also contains a PDF file of the that document.
 
 ## Useful Pointers
 
