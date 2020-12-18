@@ -1,5 +1,5 @@
 
-# Intro diction To The Medley Lisp Environment
+# Introduction To The Medley Lisp Environment
 
 Back in the '70s and '80s Lisp workstations were fairly popular.  A
 portable version of that environment was created at that time called
