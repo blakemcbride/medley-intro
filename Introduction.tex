@@ -1,0 +1,77 @@
+@c -*-texinfo-*-
+
+@chapter Introduction
+
+Back in the '70s and '80s Lisp workstations were fairly popular.  A
+portable version of one of those environments was created at that time called
+Medley.  The source code to that original system has been made
+open-source, ported, and modernized.  This introduction is about that
+system.
+
+Medley originally supported Interlisp (an older dialect of Lisp) but
+grew to support Common Lisp as well.  Medley, therefore, is a software
+development environment that embodies Interlisp and Common Lisp.
+
+The Medley development environment is very different from the file-based
+model used today.  The value of this system is to provide the ability
+to learn about, explore, and possibly utilize these benefits in future
+projects.
+
+The majority of the system is written in Lisp and rides on a portable
+virtual machine written in portable C.  The system uses an X11 window
+to display the bitmap in which the Lisp code manages. The system is
+very portable and has been ported to Linux, Macintosh, and other
+systems.
+
+The purpose of this document is to provide access to this system to
+someone who is already familiar with current Common Lisp development
+environments in as brief a form as possible.
+
+@section History
+
+Lisp was formulated by John McCarthy in 1958 at MIT.  Lisp quickly
+became the language of choice for the burgeoning field of Artificial
+Intelligence (AI) research.  Lisp quickly spread in the academic
+community.  Lisp also spread in the commercial world to support
+research projects done at those institutions.
+
+Due in part to the youth of the industry, institutions often
+implemented their own version of Lisp, and those versions almost
+always differed from other Lisp implementations in ways that suited
+each particular institution.  The two most common implementations were
+MacLisp and Interlisp.  MacLisp came from MIT (the East coast), and
+Interlisp (which was derived from BBN Lisp) came from the Xerox Palo
+Alto Research Center in California (the West coast).  Both systems
+bled into the commercial world.
+
+Back in the 1960's through the early 80's, much research in AI was
+funded by DARPA which was a government agency.  DARPA became tired of
+supporting projects written in incompatible Lisp implementations.
+They therefore issued an edict demanding a single, portable version of
+Lisp.  Thus became Common Lisp.
+
+While having a single version of Lisp had the benefit of making
+software more portable, it also had the negative effect of 
+somewhat stifling the exploration in the language.
+
+MacLisp was written in assembler code for particular machines.  Since
+those machines don't exist anymore, MacLisp itself has disappeared.
+Interlisp was also largely written in assembler and those systems too
+have disappeared.  However, there was at least one version of Interlisp
+written in C.  That is, our system, Medley.  Because it was written in
+C (to some, a portable assembler), it is still available today.
+
+From its inception up until very recently, Medley was a commercial
+product and was unavailable freely or in source-code form.  Recently,
+the system has been made open-source and place in the public domain.
+
+Due to the efforts of some of the original authors of Interlisp and
+others in the community, the Medley is being made available to the
+general public.
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+\input texinfo    @c -*-texinfo-*-
+@c
+@c
+@c generate MedleyIntro.pdf with:
+@c         texi2pdf MedleyIntro.tex
+@c
+@c
+@c %**start of header
+@setfilename MedleyIntro.inf
+@settitle Medley Introduction
+@c %**end of header
+@c @setchapternewpage odd
+@ifinfo
+This document was written by Blake McBride and was started
+on December 7, 2020.  It is a public domain document.
+@end ifinfo
+
+@titlepage
+@sp 10
+@title Introduction to Medley and Interlisp
+@subtitle December 18, 2020
+@author by Blake McBride
+@page
+@vskip 0pt plus 1filll
+This document is in the Public Domain.
+@end titlepage
+
+@contents
+
+@include Introduction.tex
+@include Architecture.tex
+@include BuildingAndRunning.tex
+@include Medley.tex
+@include InterLisp.tex
+@include CommonLisp.tex
+@include Continuing.tex
+
+@bye
+

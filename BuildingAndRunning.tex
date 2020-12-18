@@ -1,0 +1,99 @@
+@c -*-texinfo-*-
+
+@chapter Building & Running
+
+Medley is open-source and may be obtained from GitHub.  It is
+currently portable to Linux and Apple Mac systems.
+The core is written in portable C but the system depends on the
+X11 system for its display.
+
+@section Building The System
+
+@subsection Obtaining The System
+
+The Medley system comes in two parts.  The first is the C-based
+virtual machine named ``maiko''.  It may be obtained from
+@uref{https://github.com/Interlisp/maiko}.
+
+The remainder of the system may be obtained from
+@uref{https://github.com/Interlisp/medley}.
+
+Once the system has been cloned, you should have two directories named
+@code{maiko} and {medley}.
+
+@subsection Linux
+
+On Linux, the system may be built with the following commands:
+
+@example
+$ cd maiko/bin
+  
+At this point you will need to edit the file named
+@code{makefile-linux.x86_64-x} if you are using GCC rather than CLANG.
+Comment out the line (with a #) that defines @code{CC} for
+@code{clang} and uncomment the line (delete the #) for the line that
+defines @code{CC} for @code{gcc}.
+
+$ ./makeright x
+@end example
+
+This creates the virtual machine in the @code{maiko/linux.x86_64} directory.
+
+@subsection Mac
+
+Building for the Mac requires an X-Server.  This can be freely obtained 
+at @uref{https://www.xquartz.org/}.  Download and install it.
+
+After that, Medley build just like it does on Linux:
+
+@example
+$ cd maiko/bin
+$ ./makeright x
+@end example
+
+
+
+@section Running The System
+
+The system can be run by typing:
+
+@example
+$ cd medley
+$ ./run-medley
+@end example
+
+Or, if you wish to start Medley up with a particular image, use:
+
+@example
+$ cd medley
+$ ./run-medley <image-file-name>
+@end example
+
+Once the system comes up, give it a few seconds to initialize.
+
+The first time the system is run it loads the system image that comes
+with the system.  When you exit the system the state of your machine is saved
+in a file named @code{~/lisp.virtualmem}.  Subsequent system startups 
+load the @code{~/lisp.virtualmem} image by default.
+
+@section Exiting The System
+
+The system may be exited from the Interlisp prompt by typing:
+
+@example
+(LOGOUT)
+@end example
+
+Or from the Common Lisp prompt with:
+
+@example
+(IL:LOGOUT)
+@end example
+
+When you logout of the system, Medley automatically creates a binary
+dump of your system located in your home directory named
+``lisp.virtualmem''. The next time you run the system, if you don't
+specify a specific image to run, Medley restores that image so that
+you can continue right where you left off.
+
+

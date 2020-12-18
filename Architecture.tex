@@ -1,0 +1,43 @@
+@c -*-texinfo-*-
+
+@chapter Architecture
+
+The Medley system operates in a virtual machine.  Lisp code is either
+interpreted or compiled into (essentially) byte-code for this virtual
+machine.  Use of a virtual machine in this way, while more popular
+today with environments such as Java and C#, was quite a bit more
+unique and innovative when Medley was developed.  As it does with
+other languages, use of a virtual machine made Medley portable.
+
+The Medley system is comprised of two major pieces.  The first part is
+the virtual machine.  This is called ``maiko''.  The remainder of the
+system is written in a combination of Interlisp and Common Lisp.
+
+The Medley system is image-based (like Smalltalk) rather than
+file-based (like most other systems such as C, Java, C#, Python,
+etc.).  In file-based systems, source code resides in disk files.
+Interpreters interpret this code and compilers convert these files
+into machine code (placed in other files) for execution.  Development
+amounts to the editing of these source files.
+
+In an image-based systems you are working on a live, running system.
+As code is written, the running system evolves.  At various points,
+the user can save an ``image'' of that running system.  What that is
+is a single, binary, copy of the entire running system.  It basically
+saves the state of the running machine at the point the image is
+saved.  Later, the system may be restarted with a particular image
+and the system resumes from the exact point from which it was saved.
+
+With an image-based system you can still write your source code to
+disk files for various purposes but that is not the principal mode of
+development.  One of the beauties of image-based development is that
+when you want to see or change something, the entire system is at your
+immediate disposal.  You do not need to search for the source files.
+Also, changes that you make take effect immediately.  There is no need
+to rebuild and redeploy the system.
+
+As opposed to having two language sub-systems (Interlisp and Common
+Lisp), Medley integrates the two such that both or either can be used.
+Interlisp functions as the ``IL'' package of Common Lisp.
+
+

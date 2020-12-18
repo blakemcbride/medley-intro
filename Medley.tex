@@ -1,0 +1,173 @@
+@c -*-texinfo-*-
+
+@chapter Medley
+
+@section Orientation
+
+Once the system has been started, you will see some windows with title bars.
+Navigation within the system is a little unusual.
+
+To control a window, right-click on the window's title bar.
+
+To bring up a system menu, right-click anywhere outside a window.
+
+Windows titled ``Exec'' are read-eval-print loops.  The title bar will
+also tell you whether you are running LISP (for Common Lisp), XCL (for
+Xerox Common Lisp), or Interlisp.which Lisp you are running. 
+
+When the system first comes up you will notice a window labeled ``Exec (XCL)''.
+That is a Xerox Common Lisp read-eval-print loop.
+
+(Hint: When the system has completed its initialization process, a
+fresh prompt will appear.)
+
+@section Different Lisp Environments
+
+The system comes with four version of Lisp as follows:
+
+@table @code
+@item Interlisp
+the latest Interlisp implementation
+@item Old Interlisp
+an older Interlisp implementation
+@item Common Lisp
+moving towards CLtl2 and then ANSI
+@item Xerox Common Lisp
+Common Lisp with a number of Xerox enhancements
+@end table
+
+Even though each of the possible Exec's give you a default environment,
+all of the various Lisp systems are interchangeably available from any of the
+Exec windows via package specifications.  For example: an Interlisp function
+names ``ABC'' may be run from Common Lisp via @code{(IL:ABC ...)}.  Likewise,
+a Common Lisp function ``DEF'' may be executed from Interlisp via: 
+@code{(CL:DEF ...)}.
+
+@section Images And Files
+
+The Medley system includes a virtual Machine (VM) that runs the Lisp programs.
+Medley can run Lisp code interactively or compiled into the byte-code for the
+Medley VM.  This is a bit similar to the Java Virtual Machine or the .NET CLR but
+much more similar to the Smalltalk or Squeak environment.
+
+In traditional systems, a developer edits source code files and then
+compiles those files into something the machine can execute --- be it
+a machine executable file or byte-code for a VM.  Medley does not work
+that way.  Medley is an image-based system similar to Smalltalk or Squeak.
+
+When Medley is started up, you are in the development and runtime
+environment.  All of your development is done here and all of your
+programs are run here.  You are essentially editing runnable programs
+in memory.  When you exit the system, Medley creates a backup of this
+memory onto what is called a SYSOUT image.  When the system is started
+up again, this image is read into memory and the system picks up right
+where it left off.  This is what is called an image-based development
+environment.
+
+In Medley, programs are developed, edited, debugged, and run all from
+within Medley.  The state of this development is saved in your image file.
+There is also a way to save your system to more traditional
+disk files.  This is called the ``File Package''.
+
+Medley utilizes the following file types:
+
+@table @code
+@item lisp.virtualmem
+This is located in your home directory and is an image of the last
+time Medley was run.  If you start Medley without specifying an image to run, 
+this image is used.
+@item XXXX.SYSOUT
+This is an image that was explicitly saved by the developer.  This may
+be loaded by specifying its name when starting Medley.
+@item XXXX (no file name extension)
+Source files created with the ``File Package''.
+@item XXXX.LCOM
+Compiled versions of the XXXX files
+@end table
+
+@section Project Directory
+
+Medley has something called its ``connected directory''.  This is just
+another way to say ``working directory''.  All file reads and writes
+occur (if no path is specified) in the connected directory.  When Medley
+first starts up, its connected directory is your home directory.  This
+can be changes by executing one of the following commands:
+
+@example
+cd MyProject
+@end example
+or
+@example
+(CNDIR "MyProject")
+@end example
+
+You will see the connected directory displayed at the top of the Medley
+window.  Once the connected directory has been changed, all future
+image saves or file loads or saves will occur in this directory.  Additionally,
+this directory will be saved in the image so when you re-load the image, you 
+will already be in the desired directory.
+
+One thing to note, however, is that the default image
+``lisp.virtualmem'' will still be saved in your home directory.  This
+assures that if you start Medley up without specifying an image, you
+will return to the last environment you were in.
+
+
+@section Saving And Running Images
+
+An image of the running system is automatically created every time you
+logout.  This file is named ``lisp.virtualmem'' and is placed in your
+home directory.  This way, when you restart the system you'll be right
+where you left off.
+
+You can also manually save an image to a specific file at any point by
+typing the following from an Interlisp prompt:
+
+@example
+(SYSOUT "my-file")
+@end example
+
+This will save your running image to a file named ``my-file.SYSOUT''
+that can be loaded again by passing that file name to the
+@code{./run-medley} command.
+
+@section Creating And Editing Functions
+
+Objects (function, variables, etc.) can be credited and edited
+as follows:
+
+@example
+ED(myfunc)
+@end example
+
+First, if it is a new object, the system will ask what type of object
+it is.  After that the user will be presented with a GUI structure editor
+where the object may be defined or edited.
+
+When the window is closed, via right-clicking on the title bar,
+the object will be saved.
+
+
+
+@section Saving & Loading Source Code To/From Disk Files
+
+When you edit or define a function, a variable, etc., Medley keeps
+track of the fact that they have been created or edited.  These
+functions and variables are grouped and ultimately get associated with
+a file on your disk.  In places, Interlisp refers to these disk files
+as ``symbolic files''.
+
+@table @code
+@item FILELST
+list of user files the system is aware of
+@item SYSFILES
+list of system files loaded
+@item (FILES?)
+prompts user for which file to associate newly defined functions,
+variables, etc.
+@item (MAKEFILE "myfile")
+writes out all of the functions, variables, etc. that have been
+associated with file ``myfile''
+@item (LOAD "myfile")
+loads a previously saved file
+@end table

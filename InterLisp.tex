@@ -1,0 +1,87 @@
+@c -*-texinfo-*-
+
+@chapter Interlisp
+
+Interlisp is a dialect of Lisp and as such it is based in the familiar
+syntax of left-parenthesis, function name, arguments, and
+right-parenthesis.  Besides many of the functions having different
+names and arguments compared to Common Lisp, Interlisp has many other,
+more fundamental, differences from Common Lisp.  While this section
+will not go into any of the functional differences between Interlisp
+and Common Lisp, it will attempt to detail the more fundamental
+differences between the two.  The reference manual may be used for a
+detail description of the Interlisp functions.
+
+@section Case
+
+Interlisp uses mixed case.  That is, upper-case letters and lower-case
+letters are treated as different.  This means you can have a variable
+name @code{my-var} and a variable named @code{MY-VAR} that are unique and
+unrelated to each other.  This is similar to most languages such as
+C, C#, Java, Python, etc.
+
+Most Interlisp primitives are in upper case.
+
+As a side note, the Medley system includes a package called DWIM (Do
+What I Mean).  This system reads in what you type and attempts to
+automatically correct input errors.  At times, in an effort to correct
+typing errors this system will auto-convert something you type in
+lowercase into uppercase.  Thus it may appear that the case doesn't
+matter - but it does.
+
+@section Variables
+
+Except for Special Variables, variables in Common Lisp are lexically
+scoped.  This means that local variables are only visible within the
+scope they are defined.  This means, among other things, that
+variables defined in one function are not visible to other functions.
+
+Variables in Interlisp are dynamically scoped.  This means that variables
+are visible within the dynamic environment they are in.  For example,
+let's say we create two functions @code{FUN1} and @code{FUN2}.  If @code{FUN1}
+introduced a local variable and then called @code{FUN2}, then @code{FUN2} 
+would have access to the variable since it is in the dynamic environment
+of being called by @code{FUN1}.  In other words, the variable was in existence
+when @code{FUN2} was called.  
+
+Common Lisp also supports dynamic variables as well.  They are called
+the Special Variables.
+
+@section LISPn
+
+Like Common Lisp but unlike Scheme, Interlisp is a LISPn language.
+This means, in part, that the namespace for variables is separate from
+the namespace for functions.  For example, in Interlisp and
+Common Lisp, you can simultaneously have a variable named @code{ABC}
+and a function named @code{ABC} that are unrelated.
+
+
+@section LAMBDA & NLAMBDA
+
+While @code{lambda}s are the same between Interlisp and Common Lisp,
+Interlisp adds the notion of @code{nlambda}.  An @code{nlambda} is
+a function that doesn't evaluate its arguments.  Arguments to 
+@code{nlambda} function are passed directly into a function without 
+being evaluated.
+
+Interlisp supports spread and no-spread lambda arguments just like
+Common Lisp.
+
+@section Macros
+
+Interlisp supports macros but unlike Common Lisp, Interlisp symbols
+may simultaneously have a function definition and a macro definition.
+If a symbol has both a function definition and a macro definition, the
+function definition is used by the interpreter and the compiled version
+is used by the compiler.  This allows for extra error checking during 
+development and fast operation during production use.
+
+Interlisp also has a backquote facility similar to Common Lisp's @`@
+and ,@`@ read macros.
+
+Unlike Common Lisp, Interlisp does not have a special function for
+defining macros.  Macros are defined by placing their definition on
+the property list of the symbol.
+
+
+
