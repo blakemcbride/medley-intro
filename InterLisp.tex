@@ -36,20 +36,23 @@ scoped.  This means that local variables are only visible within the
 scope they are defined.  This means, among other things, that
 variables defined in one function are not visible to other functions.
 
-Variables in Interlisp are dynamically scoped.  This means that variables
-are visible within the dynamic environment they are in.  For example,
-let's say we create two functions @code{FUN1} and @code{FUN2}.  If @code{FUN1}
-introduced a local variable and then called @code{FUN2}, then @code{FUN2} 
-would have access to the variable since it is in the dynamic environment
-of being called by @code{FUN1}.  In other words, the variable was in existence
-when @code{FUN2} was called.  
+In functions that are running interpretively (as opposed to having
+been compiled), variables in Interlisp are dynamically scoped.  This
+means that variables are visible within the dynamic environment they
+are in.  For example, let's say we create two functions @code{FUN1}
+and @code{FUN2}.  If @code{FUN1} introduced a local variable and then
+called @code{FUN2}, then @code{FUN2} would have access to the variable
+since it is in the dynamic environment of being called by @code{FUN1}.
+In other words, the variable was in existence when @code{FUN2} was
+called.  Variables declared in compiled functions are lexically scoped
+as in Common Lisp.
 
 Common Lisp also supports dynamic variables as well.  They are called
 the Special Variables.
 
-@section LISPn
+@section LISP-2
 
-Like Common Lisp but unlike Scheme, Interlisp is a LISPn language.
+Like Common Lisp but unlike Scheme, Interlisp is a LISP-2 language.
 This means, in part, that the namespace for variables is separate from
 the namespace for functions.  For example, in Interlisp and
 Common Lisp, you can simultaneously have a variable named @code{ABC}
@@ -65,7 +68,8 @@ a function that doesn't evaluate its arguments.  Arguments to
 being evaluated.
 
 Interlisp supports spread and no-spread lambda arguments just like
-Common Lisp.
+Common Lisp.  However, Interlisp treats all arguments as
+@emph{optional} and ignores extra arguments.
 
 @section Macros
 

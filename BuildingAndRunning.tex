@@ -27,13 +27,15 @@ On Linux, the system may be built with the following commands:
 
 @example
 $ cd maiko/bin
-  
+@end example
+
 At this point you will need to edit the file named
 @code{makefile-linux.x86_64-x} if you are using GCC rather than CLANG.
 Comment out the line (with a #) that defines @code{CC} for
 @code{clang} and uncomment the line (delete the #) for the line that
 defines @code{CC} for @code{gcc}.
 
+@example
 $ ./makeright x
 @end example
 
